@@ -1,0 +1,21 @@
+@import './variables.scss';
+@import './footer-styles.scss';
+@import './header-styles.scss';
+@import './header-mobile.scss';
+@import './sections-styles.scss';
+@import './jumbotron-styles.scss';
+@import './posts-styles.scss';
+@import './post-item-styles.scss';
+@import './mixins.scss';
+@import './post-managment-styles.scss';
+@import './modal-window-styles.scss';
+
+//default styles resets
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  list-style: none;
+  font-family: 'Open Sans', sans-serif;
+  text-decoration: none;
+}

@@ -1,0 +1,119 @@
+@import './variables.scss';
+
+.app-jumbotron {
+  position: relative;
+  padding: 5.313rem 0 7.063rem;
+  margin: 0 auto;
+  max-width: 41.688rem;
+  text-align: center;
+  color: $primary-white;
+
+  &__inner-border {
+    position: absolute;
+    width: 100%;
+    max-width: 41.688rem;
+    height: 11.438rem;
+    border: .063rem solid white;
+    border-radius: .5rem;
+    bottom: 8.25rem;
+    border-top: 0;
+    border-bottom: 0;
+  }
+
+  &__title {
+    position: relative;
+    display: inline;
+    font-size: 2.375rem;
+    font-weight: 700;
+    line-height: 2.588rem;
+
+    &:after {
+      content: "";
+      position: absolute;
+      width: 8.25rem;
+      margin-left: 1.813rem;
+      top: 1.75rem;
+      left: 100%;
+      opacity: .7;
+      border-bottom: .063rem solid white;
+    }
+
+    &:before {
+      content: "";
+      position: absolute;
+      margin-right: 1.813rem;
+      width: 8.25rem;
+      top: 1.75rem;
+      right: 100%;
+      opacity: .7;
+      border-bottom: .063rem solid white;
+    }
+  }
+
+  &__text {
+    padding: 1.938rem 6.375rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.408rem;
+    opacity: .8;
+  }
+
+  &__btn {
+    position: relative;
+    padding: .625rem 2rem;
+    top: .5rem;
+    background-color: $primary-red;
+    font-size: 1.25rem;
+    color: $primary-white;
+    line-height: 1.884rem;
+    border: .063rem solid $primary-black;
+    border-radius: .188rem;
+    cursor: pointer;
+
+    &:after {
+      content: "";
+      position: absolute;
+      margin-left: 1.813rem;
+      width: 13.875rem;
+      top: 1.406rem;
+      left: 100%;
+      opacity: .7;
+      border-bottom: .063rem solid white;
+    }
+
+    &:before {
+      content: "";
+      position: absolute;
+      width: 13.875rem;
+      margin-right: 1.813rem;
+      top: 1.406rem;
+      right: 100%;
+      opacity: .7;
+      border-bottom: .063rem solid white;
+    }
+  }
+}
+
+//Media styles section starts
+@media all and (max-width: 48.75rem) {
+  .app-jumbotron {
+    &__inner-border {
+      display: none;
+    }
+
+    &__title,
+    &__btn {
+
+      &:after,
+      &:before {
+        display: none;
+      }
+    }
+
+    &__text {
+      padding: 1.938rem .75rem;
+    }
+  }
+}
+
+//Media styles section ends

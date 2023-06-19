@@ -1,0 +1,176 @@
+@import './variables.scss';
+
+.app-post {
+  width: 100%;
+
+  border-radius: .313rem;
+  margin-bottom: 4%;
+  cursor: pointer;
+
+  &__actions {
+    border: 0;
+    color: $primary-blue;
+    background-color: transparent;
+    font-family: "Work Sans", sans-serif;
+    font-weight: 700;
+    font-size: 0.813rem;
+    line-height: 0.953rem;
+    margin: .875rem 1.25rem;
+    padding: .375rem .75rem;
+    border: .063rem solid $primary-blue;
+    border-radius: .5rem;
+    cursor: pointer;
+  }
+
+  &__selected {
+    margin: 4rem auto;
+    width: 100%;
+    max-width: 50.5rem;
+    border-radius: 1.25rem;
+    box-shadow: 0 0 .625rem rgba(0, 0, 0, .30);
+
+    &_back-link {
+      font-weight: 700;
+      color: $primary-blue;
+      background-color: $primary-white;
+      position: fixed;
+      top: 0;
+      padding: 1rem 1.235rem;
+      display: inline-block;
+      border-radius: .5rem;
+      border: 1.063px solid $primary-blue;
+      margin: .625rem 1.25rem;
+    }
+
+    &-actions {
+      padding: 1rem;
+
+      &_button {
+        padding: .5rem .875rem;
+        border-radius: .5rem;
+        color: #fff;
+        border: 0;
+        cursor: pointer;
+        font-size: bold;
+
+        &:first-child {
+          margin-right: 1.25rem;
+        }
+
+        &--delete {
+          background-color: $primary-red;
+        }
+
+        &--update {
+          background-color: $primary-blue;
+        }
+      }
+    }
+
+    &_title {
+      padding: .875rem;
+      font-size: 1.688rem;
+      color: $primary-blue;
+    }
+
+    &_image {
+      display: block;
+      width: 100%;
+    }
+
+    &_summary {
+      font-weight: 700;
+    }
+
+    &_text,
+    &_summary {
+      padding: 0 1.25rem 1.125rem 1.25rem;
+      color: $primary-graphite;
+    }
+  }
+
+  &_image {
+    display: block;
+    width: 100%;
+    border-top-right-radius: .375rem;
+    border-top-left-radius: .375rem;
+  }
+
+  &__description {
+    padding: 1.5rem 1.313rem;
+    width: 100%;
+    border-bottom-left-radius: .313rem;
+    border-bottom-right-radius: .313rem;
+    box-shadow: 0 0 .625rem rgba(0, 0, 0, .15);
+  }
+
+  &_title {
+    height: 4.375rem;
+    overflow: hidden;
+    font-size: .938rem;
+    color: $primary-grey;
+    line-height: 1.458rem;
+  }
+
+  &_text {
+    margin: .5rem 0;
+    overflow: hidden;
+    font-size: .875rem;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.129rem;
+    color: $secondary-grey;
+    transition: all .2s ease-in-out;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__btn {
+    background: none;
+    border: none;
+    color: $primary-blue;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 700;
+    font-size: .813rem;
+    line-height: .953rem;
+    cursor: pointer;
+
+    &-icon {
+      width: .5rem;
+      height: .813rem;
+      transition: all .2s ease-out;
+    }
+
+    &-text {
+      padding: 0 0 0 .625rem;
+    }
+  }
+}
+
+//Media queries section starts
+@media all and (min-width: 90rem) {
+  .app-post {
+    width: 23%;
+    max-width: unset;
+  }
+}
+
+@media all and (max-width: 90rem) {
+  .app-post {
+    width: 100%;
+    max-width: 17.125rem;
+  }
+}
+
+@media all and (max-width: 64rem) {
+  .app-post {
+    width: 100%;
+    max-width: unset;
+    min-width: unset;
+  }
+}
+
+//Media queries section ends

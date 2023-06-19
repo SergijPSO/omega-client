@@ -1,0 +1,56 @@
+@import './variables.scss';
+
+.app {
+  &__header {
+    position: relative;
+    display: flex;
+    padding: 0 8.438rem;
+    top: 0;
+    z-index: 10;
+  }
+
+  &__navigation {
+    @include between-vertical-center;
+    width: 100%;
+    flex-wrap: wrap;
+
+    &__logo {
+      display: block;
+      width: 100%;
+      max-width: 11.938rem;
+
+      &-image {
+        max-width: 11.5rem;
+      }
+    }
+
+    &__list {
+      display: inherit;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    &__item {
+      box-sizing: border-box;
+
+      &-link {
+        padding: 1.795rem 1rem;
+        display: block;
+        font-weight: 300;
+        line-height: 1.375rem;
+        color: $primary-white;
+        border-top: 0;
+        font-size: .938rem;
+        font-weight: 700;
+
+        &:focus {
+          color: $primary-red;
+        }
+
+        &:hover {
+          opacity: .5;
+        }
+      }
+    }
+  }
+}

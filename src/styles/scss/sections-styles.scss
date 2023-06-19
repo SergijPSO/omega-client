@@ -1,0 +1,28 @@
+.app-section {
+  width: 100%;
+
+  &--preview {
+    background: url(../../../public/images/preview_bcg.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    object-fit: contain;
+  }
+
+  &--posts {
+    padding: 4.75rem 8.438rem 5.063rem;
+    width: 100%;
+  }
+}
+
+//Media styles section starts
+@media all and (max-width:48.75rem) {
+  .app-section {
+    &--posts {
+      padding-right: 1.25rem;
+      padding-left: 1.25rem;
+    }
+  }
+}
+
+//Media styles section ends

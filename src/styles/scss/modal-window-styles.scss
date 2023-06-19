@@ -1,0 +1,39 @@
+.app-modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: .25rem;
+  width: 60%;
+}
+
+.app-modal__overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.app-modal__close {
+  display: flex;
+  align-self: self-end;
+  padding: .625rem;
+  border: 0;
+  color: $primary-red;
+  background-color: transparent;
+  font-family: "Work Sans", sans-serif;
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 0.953rem;
+  cursor: pointer;
+}
+
+.app-modal__content {
+  display: flex;
+  flex-direction: column;
+}
