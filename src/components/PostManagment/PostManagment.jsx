@@ -10,7 +10,7 @@ const PostManagement = ({ postId }) => {
   };
 
   const handleUpdatePost = async () => {
-    const url = `http://localhost:5000/api/posts/${postId}`;
+    const url = `${REACT_APP_API_URL}api/posts/${postId}`;
     const formData = new FormData();
     const title = document.getElementById("title").value;
     const summary = document.getElementById("summary").value;
@@ -37,7 +37,7 @@ const PostManagement = ({ postId }) => {
   const handeleCreateNewPost = async (event) => {
     event.preventDefault();
 
-    const url = "http://localhost:5000/api/posts";
+    const url = `${REACT_APP_API_URL}api/posts`;
     const formData = new FormData();
 
     const title = document.getElementById("title").value;

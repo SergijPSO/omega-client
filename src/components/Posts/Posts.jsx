@@ -11,7 +11,7 @@ const Posts = (props) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/posts");
+        const response = await axios.get(`${REACT_APP_API_URL}api/posts`);
         setPostData(response.data);
       } catch (error) {
         console.error(error);

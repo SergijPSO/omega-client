@@ -16,7 +16,7 @@ const PostDetails = () => {
   };
 
   const handleDeletePost = async (postId) => {
-    const url = `http://localhost:5000/api/posts/${postId}`;
+    const url = `${REACT_APP_API_URL}api/posts/${postId}`;
 
     try {
       await axios.delete(url);
