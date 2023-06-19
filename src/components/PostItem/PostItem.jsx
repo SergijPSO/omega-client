@@ -15,7 +15,7 @@ const PostItem = ({ post, onClick }) => {
   return (
     <div className='app-post'>
       <img
-        src={`${REACT_APP_API_URL}${picture}`}
+        src={`${process.env.REACT_APP_API_URL}${picture}`}
         alt='post image'
         className='app-post_image'
         onClick={onClick}

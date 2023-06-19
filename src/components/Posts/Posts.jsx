@@ -4,22 +4,8 @@ import PostItem from "../PostItem/PostItem";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const Posts = (props) => {
-  const [postData, setPostData] = useState([]);
+const Posts = ({ postData }) => {
   const router = useRouter();
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(`${REACT_APP_API_URL}api/posts`);
-        setPostData(response.data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    fetchData();
-  }, []);
 
   const handleClick = (postId) => {
     const selectedPost = postData.find((post) => post._id === postId);
@@ -39,15 +25,29 @@ const Posts = (props) => {
             />
           ))}
       </div>
-      <div>{props.children}</div>
     </div>
   );
 };
 
-export async function getServerSideProps() {
-  return {
-    props: {},
-  };
+export async function getStaticProps() {
+  try {
+    const response = await axios.get(
+      `${process.env.REACT_APP_API_URL}api/posts`
+    );
+    const postData = response.data;
+    return {
+      props: {
+        postData,
+      },
+    };
+  } catch (error) {
+    console.error("Failed to fetch posts:", error);
+    return {
+      props: {
+        postData: [],
+      },
+    };
+  }
 }
 
 export default Posts;

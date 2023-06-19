@@ -3,9 +3,7 @@ import axios from "axios";
 import ModalWindow from "@/components/ModalWindow/ModalWindow";
 import Link from "next/link";
 
-const PostDetails = () => {
-  const [post, setPost] = useState(null);
-
+const PostDetails = ({ post }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const openModal = () => {
@@ -16,7 +14,7 @@ const PostDetails = () => {
   };
 
   const handleDeletePost = async (postId) => {
-    const url = `${REACT_APP_API_URL}api/posts/${postId}`;
+    const url = `${process.env.REACT_APP_API_URL}api/posts/${postId}`;
 
     try {
       await axios.delete(url);
@@ -27,18 +25,13 @@ const PostDetails = () => {
     }
   };
 
-  useEffect(() => {
-    const selectedPost = JSON.parse(sessionStorage.getItem("selectedPost"));
-    setPost(selectedPost);
-  }, []);
-
   if (!post) {
     return <div>Loading...</div>;
   }
 
   return (
     <div className='app-post__cover'>
-      <Link className='app-post__selected_back-link' to href='/'>
+      <Link className='app-post__selected_back-link' href='/'>
         GO BACK
       </Link>
       <div className='app-post__selected'>
@@ -74,5 +67,26 @@ const PostDetails = () => {
     </div>
   );
 };
+
+export async function getStaticProps() {
+  const postId = "your-post-id";
+  const url = `${process.env.REACT_APP_API_URL}api/posts/${postId}`;
+  try {
+    const response = await axios.get(url);
+    const post = response.data;
+    return {
+      props: {
+        post,
+      },
+    };
+  } catch (error) {
+    console.error("Failed to fetch post:", error);
+    return {
+      props: {
+        post: null,
+      },
+    };
+  }
+}
 
 export default PostDetails;

@@ -9,12 +9,9 @@ const PostManagement = ({ postId }) => {
     setSelectedFile(event.target.files[0]);
   };
 
-  const handleUpdatePost = async () => {
-    const url = `${REACT_APP_API_URL}api/posts/${postId}`;
+  const handleUpdatePost = async (title, summary, text) => {
+    const url = `${process.env.REACT_APP_API_URL}api/posts/${postId}`;
     const formData = new FormData();
-    const title = document.getElementById("title").value;
-    const summary = document.getElementById("summary").value;
-    const text = document.getElementById("text").value;
 
     formData.append("_id", postId);
     formData.append("title", title);
@@ -34,15 +31,9 @@ const PostManagement = ({ postId }) => {
     }
   };
 
-  const handeleCreateNewPost = async (event) => {
-    event.preventDefault();
-
-    const url = `${REACT_APP_API_URL}api/posts`;
+  const handeleCreateNewPost = async (title, summary, text) => {
+    const url = `${process.env.REACT_APP_API_URL}api/posts`;
     const formData = new FormData();
-
-    const title = document.getElementById("title").value;
-    const summary = document.getElementById("summary").value;
-    const text = document.getElementById("text").value;
 
     formData.append("title", title);
     formData.append("summary", summary);
@@ -54,7 +45,7 @@ const PostManagement = ({ postId }) => {
         headers: { "Content-Type": "multipart/form-data" },
       });
       console.log(response);
-      alert("Post was created successfully!`");
+      alert("Post was created successfully!");
       window.location.href = "/";
       console.log("Post data posted successfully!");
     } catch (error) {
@@ -101,14 +92,26 @@ const PostManagement = ({ postId }) => {
         <fieldset className='app-managment__field app-managment__field--image'></fieldset>
         <fieldset className='app-managment__field app-managment__field--buttons'>
           <button
-            onClick={handeleCreateNewPost}
+            onClick={(event) => {
+              event.preventDefault();
+              const title = document.getElementById("title").value;
+              const summary = document.getElementById("summary").value;
+              const text = document.getElementById("text").value;
+              handeleCreateNewPost(title, summary, text);
+            }}
             className='app-managment_button app-managment_button--create'
           >
             Create
           </button>
 
           <button
-            onClick={handleUpdatePost}
+            onClick={(event) => {
+              event.preventDefault();
+              const title = document.getElementById("title").value;
+              const summary = document.getElementById("summary").value;
+              const text = document.getElementById("text").value;
+              handleUpdatePost(title, summary, text);
+            }}
             className='app-managment_button app-managment_button--update'
           >
             Update
@@ -118,5 +121,14 @@ const PostManagement = ({ postId }) => {
     </div>
   );
 };
+
+export async function getStaticProps() {
+  const postId = postId; // Replace with the actual post ID or remove this line if it's not necessary
+  return {
+    props: {
+      postId,
+    },
+  };
+}
 
 export default PostManagement;
