@@ -1,14 +1,35 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import PostItem from "../PostItem/PostItem";
-import { useEffect, useState } from "react";
 import axios from "axios";
 
-const Posts = ({ postData }) => {
+export default function Posts() {
   const router = useRouter();
+  const [data, setData] = useState(null);
+  console.log("data", data);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  async function fetchData() {
+    try {
+      const response = await axios.get(
+        `${process.env.NEXT_PUBLIC_API_URL}api/posts`
+      );
+      const data = response.data;
+      setData(data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  }
+
+  if (!data) {
+    return <div className='app-loader'>Loading...</div>;
+  }
 
   const handleClick = (postId) => {
-    const selectedPost = postData.find((post) => post._id === postId);
+    const selectedPost = data.find((post) => post._id === postId);
     router.push(`/posts/${postId}`, undefined, { shallow: true });
     sessionStorage.setItem("selectedPost", JSON.stringify(selectedPost));
   };
@@ -16,8 +37,8 @@ const Posts = ({ postData }) => {
   return (
     <div className='app-posts'>
       <div className='app-posts__list'>
-        {postData &&
-          postData.map((post) => (
+        {data &&
+          data.map((post) => (
             <PostItem
               key={post._id}
               post={post}
@@ -27,27 +48,4 @@ const Posts = ({ postData }) => {
       </div>
     </div>
   );
-};
-
-export async function getStaticProps() {
-  try {
-    const response = await axios.get(
-      `${process.env.REACT_APP_API_URL}api/posts`
-    );
-    const postData = response.data;
-    return {
-      props: {
-        postData,
-      },
-    };
-  } catch (error) {
-    console.error("Failed to fetch posts:", error);
-    return {
-      props: {
-        postData: [],
-      },
-    };
-  }
 }
-
-export default Posts;

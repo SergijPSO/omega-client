@@ -4,8 +4,9 @@
 
   &__list {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     flex-wrap: wrap;
     width: 100%;
+    gap: 2.66%;
   }
 }

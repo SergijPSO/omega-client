@@ -14,7 +14,7 @@ const PostDetails = ({ post }) => {
   };
 
   const handleDeletePost = async (postId) => {
-    const url = `${process.env.REACT_APP_API_URL}api/posts/${postId}`;
+    const url = `${process.env.NEXT_PUBLIC_API_URL}api/posts/${postId}`;
 
     try {
       await axios.delete(url);
@@ -26,19 +26,17 @@ const PostDetails = ({ post }) => {
   };
 
   if (!post) {
-    return <div>Loading...</div>;
+    return <div className='app-loading'>Loading...</div>;
   }
 
+  console.log();
   return (
     <div className='app-post__cover'>
       <Link className='app-post__selected_back-link' href='/'>
         GO BACK
       </Link>
       <div className='app-post__selected'>
-        <img
-          className='app-post__selected_image'
-          src={`/static/${post.picture}`}
-        />
+        <img className='app-post__selected_image' src={post.picture} />
         <h1 className='app-post__selected_title'>{post.title}</h1>
         <p className='app-post__selected_summary'>{post.summary}</p>
         <p className='app-post__selected_text'>{post.text}</p>
@@ -68,12 +66,25 @@ const PostDetails = ({ post }) => {
   );
 };
 
-export async function getStaticProps() {
-  const postId = "your-post-id";
-  const url = `${process.env.REACT_APP_API_URL}api/posts/${postId}`;
+export async function getStaticPaths() {
+  return {
+    paths: [],
+    fallback: true,
+  };
+}
+
+export async function getStaticProps({ params }) {
+  const postId = params.postId;
+  const url = `${process.env.NEXT_PUBLIC_API_URL}api/posts/${postId}`;
   try {
     const response = await axios.get(url);
     const post = response.data;
+    post.picture = `${process.env.NEXT_PUBLIC_API_URL}${post.picture}`;
+    console.log("POST", post);
+    // const updatedPosts = post.map((el) => ({
+    //   ...el,
+    //   picture: `${process.env.NEXT_PUBLIC_API_URL}/static/${el.picture}`,
+    // }));
     return {
       props: {
         post,

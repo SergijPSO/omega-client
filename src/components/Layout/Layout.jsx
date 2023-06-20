@@ -3,7 +3,7 @@ import Head from "next/head";
 
 const Layout = (props) => {
   return (
-    <div>
+    <>
       <Head>
         <title>{props.pageTitle}</title>
         <meta name='Omega' content='OMEGA News' />
@@ -16,14 +16,8 @@ const Layout = (props) => {
         />
       </Head>
       <div>{props.children}</div>
-    </div>
+    </>
   );
 };
-
-export async function getStaticProps() {
-  return {
-    props: {},
-  };
-}
 
 export default Layout;

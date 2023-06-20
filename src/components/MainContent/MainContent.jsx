@@ -5,7 +5,6 @@ import Header from "@/components/Header/Header";
 import useScreenWidth from "../../hooks/useScreenWidth";
 import Jumbotron from "@/components/Jumbotron/Jumbotron";
 import Posts from "@/components/Posts/Posts";
-import PostManagment from "../PostManagment/PostManagment";
 
 const MainContent = () => {
   const screenWidth = useScreenWidth();

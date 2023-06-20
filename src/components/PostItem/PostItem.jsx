@@ -1,11 +1,11 @@
-import { React, useState } from "react";
+import Image from "next/image";
+import { useState } from "react";
+import axios from "axios";
 
 const PostItem = ({ post, onClick }) => {
-  console.log("post", post);
-
   const [height, setHeight] = useState("3.5rem");
   const [rotate, setRotate] = useState(false);
-  const { summary, picture, title, _id } = post;
+  const { summary, picture, title } = post;
 
   const toggleHeight = () => {
     setHeight((prevHeight) => (prevHeight === "3.5rem" ? "100%" : "3.5rem"));
@@ -14,11 +14,14 @@ const PostItem = ({ post, onClick }) => {
 
   return (
     <div className='app-post'>
-      <img
-        src={`${process.env.REACT_APP_API_URL}${picture}`}
+      <Image
+        src={`${process.env.NEXT_PUBLIC_API_URL}${picture}`}
         alt='post image'
         className='app-post_image'
         onClick={onClick}
+        width={300}
+        height={350}
+        layout='responsive'
       />
       <div className='app-post__description'>
         <h3 className='app-post_title' onClick={onClick}>{`${title}`}</h3>
@@ -44,11 +47,5 @@ const PostItem = ({ post, onClick }) => {
     </div>
   );
 };
-
-export async function getServerSideProps() {
-  return {
-    props: {},
-  };
-}
 
 export default PostItem;

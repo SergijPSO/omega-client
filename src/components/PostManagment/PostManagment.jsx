@@ -10,7 +10,7 @@ const PostManagement = ({ postId }) => {
   };
 
   const handleUpdatePost = async (title, summary, text) => {
-    const url = `${process.env.REACT_APP_API_URL}api/posts/${postId}`;
+    const url = `${process.env.NEXT_PUBLIC_API_URL}api/posts/${postId}`;
     const formData = new FormData();
 
     formData.append("_id", postId);
@@ -32,7 +32,7 @@ const PostManagement = ({ postId }) => {
   };
 
   const handeleCreateNewPost = async (title, summary, text) => {
-    const url = `${process.env.REACT_APP_API_URL}api/posts`;
+    const url = `${process.env.NEXT_PUBLIC_API_URL}api/posts`;
     const formData = new FormData();
 
     formData.append("title", title);
@@ -123,7 +123,7 @@ const PostManagement = ({ postId }) => {
 };
 
 export async function getStaticProps() {
-  const postId = postId; // Replace with the actual post ID or remove this line if it's not necessary
+  const postId = postId;
   return {
     props: {
       postId,
