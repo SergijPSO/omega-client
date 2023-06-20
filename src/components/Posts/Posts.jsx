@@ -6,7 +6,6 @@ import axios from "axios";
 export default function Posts() {
   const router = useRouter();
   const [data, setData] = useState(null);
-  console.log("data", data);
 
   useEffect(() => {
     fetchData();

@@ -29,7 +29,6 @@ const PostDetails = ({ post }) => {
     return <div className='app-loading'>Loading...</div>;
   }
 
-  console.log();
   return (
     <div className='app-post__cover'>
       <Link className='app-post__selected_back-link' href='/'>
@@ -80,11 +79,6 @@ export async function getStaticProps({ params }) {
     const response = await axios.get(url);
     const post = response.data;
     post.picture = `${process.env.NEXT_PUBLIC_API_URL}${post.picture}`;
-    console.log("POST", post);
-    // const updatedPosts = post.map((el) => ({
-    //   ...el,
-    //   picture: `${process.env.NEXT_PUBLIC_API_URL}/static/${el.picture}`,
-    // }));
     return {
       props: {
         post,

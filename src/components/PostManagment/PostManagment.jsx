@@ -2,7 +2,6 @@ import { useState } from "react";
 import axios from "axios";
 
 const PostManagement = ({ postId }) => {
-  console.log(postId);
   const [selectedFile, setSelectedFile] = useState(null);
 
   const handleFileChange = (event) => {
@@ -25,7 +24,6 @@ const PostManagement = ({ postId }) => {
       });
       alert("Post was updated successfully!");
       window.location.href = "/";
-      console.log(`Post with ID ${postId} updated successfully.`);
     } catch (error) {
       console.error("Failed to update post:", error);
     }
@@ -44,10 +42,8 @@ const PostManagement = ({ postId }) => {
       const response = await axios.post(url, formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
-      console.log(response);
       alert("Post was created successfully!");
       window.location.href = "/";
-      console.log("Post data posted successfully!");
     } catch (error) {
       console.error("Failed to post form data:", error);
     }
