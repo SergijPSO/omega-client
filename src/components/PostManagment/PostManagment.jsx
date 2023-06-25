@@ -23,7 +23,6 @@ const PostManagement = ({ postId }) => {
         headers: { "Content-Type": "multipart/form-data" },
       });
       alert("Post was updated successfully!");
-      window.location.href = "/";
     } catch (error) {
       console.error("Failed to update post:", error);
     }
@@ -102,7 +101,7 @@ const PostManagement = ({ postId }) => {
 
           <button
             onClick={(event) => {
-              event.preventDefault();
+              // event.preventDefault();
               const title = document.getElementById("title").value;
               const summary = document.getElementById("summary").value;
               const text = document.getElementById("text").value;
